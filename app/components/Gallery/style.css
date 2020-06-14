@@ -1,0 +1,41 @@
+.gallery {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-top: 50px;
+}
+
+.gallery li {
+    height: 20vh;
+    flex-grow: 1;
+    margin:10px;
+}
+.gallery li:last-child{
+    flex-grow: 10;
+
+}
+.gallery li img {
+    /* height: 50%; */
+    max-height: 100%;
+    min-width: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.add-photo{
+    border-style: solid;
+    /* width: 300px; */
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+
+}
+.add-photo svg{
+    margin-bottom:15px;
+}
