@@ -25,18 +25,25 @@ import './style.css';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { login } from './actions';
+import { Redirect } from 'react-router-dom';
 const counter = 0;
 export function Login(props) {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
 
 
-  
+
   const [animationClock, setAnimationClock] = useState(0);
   const [email, setEmail] = useState("shamot.group@gmail.com");
   const [password, setPassword] = useState("123");
+  const [redirect, setRedirect] = useState();
+  useEffect(() => {
+    if (props.login.token && props.login.token != "")
+      setRedirect(<Redirect to="/control" />)
+  }, ["token"])
   return (
     <div>
+      {redirect}
       <Helmet>
         <title>Login</title>
         <meta name="description" content="Description of Login" />
@@ -79,15 +86,14 @@ export function Login(props) {
               title="Login"
               color="#ab3a55"
               style={{ marginTop: '20px' }}
-              onClick={function() {
-                
-                  console.log(props);
-                  props.doLogin(email, password)
-                
+              onClick={function () {
+
+                console.log(props);
+                props.doLogin(email, password)
+
               }}
             />
           </div>
-            {JSON.stringify(props.login)}
         </div>
       </div>
     </div>

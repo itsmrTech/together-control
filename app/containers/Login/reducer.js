@@ -13,7 +13,7 @@ export const initialState = {
     firstName: "",
     lastName: ""
   },
-  token:""
+  token:localStorage.getItem("token")
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -25,6 +25,7 @@ const loginReducer = (state = initialState, action) =>
       case LOGIN_SUCCESS:
         draft.user=action.user;
         draft.token=action.token;
+        localStorage.setItem("token",action.token);
         console.log("tok",draft.token,action.token)
         break;
     }
