@@ -1,0 +1,83 @@
+.login-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 100vh;
+}
+
+#panel1 {
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#panel1 h1 {
+    font-family: NexaBold;
+    color: #444;
+    font-size: 10vw;
+    -webkit-mask-image: radial-gradient(circle farthest-corner at 100% 150%, rgba(0,0,0,0.8) 20%, black 22%);
+    -webkit-mask-size: 588%;
+    -webkit-mask-position: -288% 0%;
+
+    mask-image: radial-gradient(circle farthest-corner at 100% 150%, rgba(0,0,0,0.8) 20%, black 22%);
+    mask-size: 588%;
+    mask-position: -288% 0%;
+
+    animation: example 10s ease infinite;
+    /* animation-duration: 4s; */
+}
+
+@keyframes example {
+    0% {
+        -webkit-mask-size:588%;
+        -webkit-mask-position: -288% 100%;
+
+        mask-size:588%;
+        mask-position: -288% 100%;
+
+    }
+    20% {
+        -webkit-mask-size: 644%;
+        -webkit-mask-position: -253% 0%;
+
+        mask-size: 644%;
+        mask-position: -253% 0%;
+    }
+    
+    /* 40% {
+        -webkit-mask-size: 644%;
+        -webkit-mask-position: -253% 0%;
+    } */
+    
+    
+}
+#panel2{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.colorful-card{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    padding:50px;
+    border-radius: 30px;
+    max-width: fit-content;
+    align-self: center;
+    background-image: linear-gradient(10deg, #b54368, #ff6b6b);
+}
+.colorful-card input{
+    margin: 10px;
+    border:none;
+    border-radius: 100px;
+    height: 40px;;
+    background-color: rgba(0,0,0,0.1);
+    text-align: center ;
+    color:rgba(255,255,255,0.8);
+}
+.colorful-card h2{
+    text-align: center;
+    color:white;
+    font-size:30px;
+}

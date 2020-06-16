@@ -15,6 +15,8 @@ import ControlPanel from 'containers/ControlPanel/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
+import { Login } from '../Login';
+import '../../assets/global-style.css';
 
 export default function App() {
   return (
@@ -22,6 +24,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/control" component={ControlPanel} />
+        <Route exact path="/login" component={Login} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

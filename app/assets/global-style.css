@@ -1,0 +1,11 @@
+@font-face{
+    font-family: NexaBold;
+    src:url("./fonts/Nexa.Font.Bold.otf")
+}
+@font-face{
+    font-family: NexaLight;
+    src:url("./fonts/Nexa.Font.Light.otf")
+}
+body{
+    font-family: NexaLight;
+}
