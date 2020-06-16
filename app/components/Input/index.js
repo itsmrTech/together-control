@@ -12,7 +12,7 @@ import React, { memo, cloneElement } from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function Input(props) {
+function Input(props={dark:true}) {
   return (
     <div style={{ width: 'fit-content', alignSelf: 'center' }}>
       {props.icon
@@ -29,6 +29,7 @@ function Input(props) {
         : undefined}
 
       <input
+    
         style={{
           margin: '10px',
           border: 'none',

@@ -15,7 +15,7 @@ import ControlPanel from 'containers/ControlPanel/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
-import { Login } from '../Login';
+import Login from '../Login';
 import '../../assets/global-style.css';
 
 export default function App() {

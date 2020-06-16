@@ -24,21 +24,17 @@ import '../../assets/global-style.css';
 import './style.css';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import { login } from './actions';
 const counter = 0;
-export function Login() {
+export function Login(props) {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
 
-  useEffect(() => {
-    // setInterval(() => {
-    //   console.log(animationClock)
-    //   setAnimationClock(counter)
-    //   counter++
-    // }, 50)
-  }, []);
+
+  
   const [animationClock, setAnimationClock] = useState(0);
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState("shamot.group@gmail.com");
+  const [password, setPassword] = useState("123");
   return (
     <div>
       <Helmet>
@@ -63,28 +59,35 @@ export function Login() {
             <h2>Login to you Account</h2>
             <Input
               icon={<UserIcon />}
-              onValueChanged={value => {
-                setUsername(value);
+              onChange={event => {
+                setEmail(event.target.value);
               }}
               dark
-              placeholder="Username"
+              placeholder="Email"
             />
             <Input
+
               icon={<PasswordIcon />}
               dark
               placeholder="Password"
               type="password"
-              onValueChanged={value => {
-                setPassword(value);
+              onChange={event => {
+                setPassword(event.target.value);
               }}
             />
             <Button
               title="Login"
               color="#ab3a55"
               style={{ marginTop: '20px' }}
-              onClick={() => {}}
+              onClick={function() {
+                
+                  console.log(props);
+                  props.doLogin(email, password)
+                
+              }}
             />
           </div>
+            {JSON.stringify(props.login)}
         </div>
       </div>
     </div>
@@ -101,6 +104,9 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
+    doLogin: (email, password) => {
+      dispatch(login(email, password));
+    },
     dispatch,
   };
 }
