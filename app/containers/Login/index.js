@@ -48,7 +48,8 @@ export function Login() {
       <div className="login-container">
         <div id="panel1">
           <h1
-style={{
+            style={
+              {
                 // "WebkitMaskImage": `radial-gradient(farthest-corner at 100% 100%, black ${animationClock*5}%, transparent)`
               }
             }
@@ -61,20 +62,27 @@ style={{
           <div className="colorful-card">
             <h2>Login to you Account</h2>
             <Input
-icon={<UserIcon />} onValueChanged={(value) => {
+              icon={<UserIcon />}
+              onValueChanged={value => {
                 setUsername(value);
               }}
-              dark={true}
+              dark
               placeholder="Username"
             />
             <Input
-icon={<PasswordIcon />} dark placeholder="Password" type="password" onValueChanged={(value) => {
+              icon={<PasswordIcon />}
+              dark
+              placeholder="Password"
+              type="password"
+              onValueChanged={value => {
                 setPassword(value);
               }}
             />
             <Button
-title="Login" color="#ab3a55" style={{ marginTop: "20px" }} onClick={() => {
-              
+              title="Login"
+              color="#ab3a55"
+              style={{ marginTop: '20px' }}
+              onClick={() => {}}
             />
           </div>
         </div>
