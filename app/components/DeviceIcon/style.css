@@ -1,0 +1,82 @@
+.not-paired-frame g path {
+    fill: #929292;
+}
+
+.not-paired-frame {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.not-paired-screen {
+    width: 727px;
+    height: 727px;
+    background-color: #505050;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    transform: scale(0.83);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    color:white;
+    font-size:300px;
+    /*  */
+}
+
+@keyframes not-paired-faiding {
+    0% {
+        opacity: 0.2;
+        filter: blur(50px);
+    }
+    100% {
+        opacity: 0.5;
+        filter: blur(10px);
+    }
+}
+
+@keyframes not-paired-screen-pulsing {
+    0% {
+        background-position: 0% 17%
+    }
+    50% {
+        background-position: 100% 84%
+    }
+    100% {
+        background-position: 0% 17%
+    }
+}
+
+.device-icon-container {
+    animation-name: not-paired-faiding;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease;
+    opacity: 0.2;
+    filter: blur(50px);
+    transition-duration: 2s;
+    transition-timing-function: ease-out;
+}
+
+@keyframes device-waiting {
+    from {
+        transform: rotate(0deg) scaleX(1.3) scale(0.4) translate(-300px, -100px) perspective(100vw) rotate3d(70, -94.5, 26.5, 0deg)
+    }
+    to {
+        transform: rotate(0deg) scaleX(1.3) scale(0.4) translate(-300px, -100px) perspective(100vw) rotate3d(70, -94.5, 26.5, 19deg)
+    }
+}
+@keyframes fadeout{
+    to{
+        opacity: 0;
+    }
+}
+.hide{
+    opacity: 0;
+    animation-name:fadeout;
+    animation-iteration-count: initial;
+    animation-fill-mode: forwards;
+}

@@ -13,8 +13,8 @@ export function* loginRequest(action) {
     const {email,password}=action;
     const result = yield call(requestAPI, '/users/login', { email, password }, "POST");
     console.log("api",result);
-    const {token,user}=result.data
-    yield put(loginSucceed(token,user));
+    const {token,user,devices}=result.data
+    yield put(loginSucceed(token,user,devices));
   } catch (e) {
     yield put(loginFailed(e));
   }

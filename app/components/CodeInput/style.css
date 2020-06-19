@@ -1,0 +1,21 @@
+.code-input input{
+    font-family: 'AnonymousPro', monospace;
+    outline: none;
+    border:none;
+    background-color: unset;
+    font-size:64px;
+    letter-spacing: 1ch;
+    padding-left: 0.25ch;
+    background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1.5ch, transparent 0, transparent 2ch) 0 100%/ 8ch 2px no-repeat;
+
+}
+.code-input .lines-container{
+    display: flex;
+    flex-direction: row;
+}
+.code-input .lines-container .line{
+    width: 60px;
+    height: 8px;
+    background-color: #c53973;
+    margin:5px;
+}

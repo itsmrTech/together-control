@@ -11,6 +11,12 @@ export const requestAPI = async (
   path = '/',
   data,
   method = 'GET',
-  options = {},
-) => await sendRequest(`${vars.hostname}${path}`, data, method, options);
+  options = {
+    headers:{}
+  },
+) => await sendRequest(`${vars.hostname}${path}`, data, method, {...options,
+  headers:{
+    ...options.headers,
+    "x-access-token":localStorage.getItem("token")
+  }});
 export default sendRequest;

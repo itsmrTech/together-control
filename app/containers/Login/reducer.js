@@ -13,6 +13,7 @@ export const initialState = {
     firstName: "",
     lastName: ""
   },
+  devices:[],
   token:localStorage.getItem("token")
 };
 
@@ -25,6 +26,7 @@ const loginReducer = (state = initialState, action) =>
       case LOGIN_SUCCESS:
         draft.user=action.user;
         draft.token=action.token;
+        draft.devices=action.devices;
         localStorage.setItem("token",action.token);
         console.log("tok",draft.token,action.token)
         break;

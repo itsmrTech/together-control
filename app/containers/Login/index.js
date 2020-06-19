@@ -38,9 +38,16 @@ export function Login(props) {
   const [password, setPassword] = useState("123");
   const [redirect, setRedirect] = useState();
   useEffect(() => {
-    if (props.login.token && props.login.token != "")
-      setRedirect(<Redirect to="/control" />)
-  }, ["token"])
+    console.log(props.login)
+    if (props.login.token && props.login.token != "") {
+      if (props.login.devices.length > 1) {
+        setRedirect(<Redirect to="/devices" />)
+      }
+      else if (props.login.devices.length == 1)
+        setRedirect(<Redirect to="/control" />)
+      else setRedirect(<Redirect to="/devices/new" />)
+    }
+  }, [props.login.token])
   return (
     <div>
       {redirect}

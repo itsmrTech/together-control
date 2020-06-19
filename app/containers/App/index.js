@@ -13,9 +13,11 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import ControlPanel from 'containers/ControlPanel/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Login from '../Login';
+import Devices from '../Devices';
+import NewDevice from '../NewDevice';
 
 import GlobalStyle from '../../global-styles';
-import Login from '../Login';
 import '../../assets/global-style.css';
 
 export default function App() {
@@ -25,6 +27,8 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/control" component={ControlPanel} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/devices/new" component={NewDevice} />
+        <Route exact path="/devices" component={Devices} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

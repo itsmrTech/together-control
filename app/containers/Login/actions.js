@@ -20,11 +20,12 @@ export function login(email,password){
     password
   }
 }
-export function loginSucceed(token,user){
+export function loginSucceed(token,user,devices){
   return {
     type:LOGIN_SUCCESS,
     token,
-    user
+    user,
+    devices
   }
 }
 export function loginFailed(error) {
