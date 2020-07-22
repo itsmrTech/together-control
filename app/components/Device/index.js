@@ -16,7 +16,11 @@ import DeviceScreen from '../DeviceScreen';
 function Device(props) {
   return (
     <div className={`border ${props.className}`}>
-      <DeviceScreen content_type="slideshow" slideshow={props.slideshow} />
+      <DeviceScreen
+        content_type={props.content_type}
+        onUserMedia={props.onUserMedia}
+        slideshow={props.slideshow}
+      />
     </div>
   );
 }

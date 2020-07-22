@@ -11,8 +11,10 @@ import React, { memo, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
-function Button(props = { color: 'black' }) {
-  const [hover, setHover] = useState(false);
+function Button(props = { color: 'black', secondColor: 'white' }) {
+  let { dark, secondColor, disabledColor = 'grey', disabled } = props;
+  const [hover, setHover] = useState(dark);
+  if (!secondColor) secondColor = 'white';
   return (
     <button
       {...props}
@@ -27,15 +29,23 @@ function Button(props = { color: 'black' }) {
         fontFamily: 'NexaBold',
         color: !hover ? props.color : 'white',
         textTransform: 'uppercase',
-        cursor: 'pointer',
+        cursor: disabled ? '' : 'pointer',
         margin: '10px',
-        backgroundColor: hover ? props.color : 'white',
+        backgroundColor: !disabled
+          ? hover
+            ? props.color
+            : secondColor
+          : disabledColor,
         transition: 'all 0.5s ease 0s',
         outline: 'none',
         ...props.style,
       }}
-      onMouseLeave={() => setHover(false)}
-      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => {
+        if (!disabled) setHover(dark);
+      }}
+      onMouseEnter={() => {
+        if (!disabled) setHover(!dark);
+      }}
     >
       {props.title}
     </button>

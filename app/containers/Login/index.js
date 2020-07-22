@@ -31,23 +31,20 @@ export function Login(props) {
   useInjectReducer({ key: 'login', reducer });
   useInjectSaga({ key: 'login', saga });
 
-
-
   const [animationClock, setAnimationClock] = useState(0);
-  const [email, setEmail] = useState("shamot.group@gmail.com");
-  const [password, setPassword] = useState("123");
+  const [email, setEmail] = useState('shamot.group@gmail.com');
+  const [password, setPassword] = useState('123');
   const [redirect, setRedirect] = useState();
   useEffect(() => {
-    console.log(props.login)
-    if (props.login.token && props.login.token != "") {
+    console.log(props.login);
+    if (props.login.token && props.login.token != '') {
       if (props.login.devices.length > 1) {
-        setRedirect(<Redirect to="/devices" />)
-      }
-      else if (props.login.devices.length == 1)
-        setRedirect(<Redirect to="/control" />)
-      else setRedirect(<Redirect to="/devices/new" />)
+        setRedirect(<Redirect to="/devices" />);
+      } else if (props.login.devices.length == 1)
+        setRedirect(<Redirect to="/control" />);
+      else setRedirect(<Redirect to="/device-setup" />);
     }
-  }, [props.login.token])
+  }, [props.login.token]);
   return (
     <div>
       {redirect}
@@ -80,7 +77,6 @@ export function Login(props) {
               placeholder="Email"
             />
             <Input
-
               icon={<PasswordIcon />}
               dark
               placeholder="Password"
@@ -93,11 +89,9 @@ export function Login(props) {
               title="Login"
               color="#ab3a55"
               style={{ marginTop: '20px' }}
-              onClick={function () {
-
+              onClick={function() {
                 console.log(props);
-                props.doLogin(email, password)
-
+                props.doLogin(email, password);
               }}
             />
           </div>

@@ -13,3 +13,8 @@
 body{
     font-family: NexaLight;
 }
+input{
+    outline: none;
+    background-color: unset;
+    border:none;
+}

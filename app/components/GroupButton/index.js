@@ -10,27 +10,30 @@ import React, { memo, useState } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
-import "./style.css"
+import './style.css';
 
-function GroupButton(props={buttons:[]}) {
-  const [hover,setHover]=useState(-1)
-  
-  let buttons=props.buttons.map((b,i)=>{
-    return <li onMouseEnter={()=>{
-      setHover(i)
-      console.log(hover,(hover===i)?b.color:"none")
-    }} onMouseLeave={()=>setHover(-1)} key={i}>
-      {React.cloneElement(b.icon,{style:{
-      fill:(hover==i)?b.color:"unset"
-    }})}
+function GroupButton(props = { buttons: [] }) {
+  const [hover, setHover] = useState(-1);
+
+  const buttons = props.buttons.map((b, i) => (
+    <li
+      onClick={b.onClick}
+      onMouseEnter={() => {
+        setHover(i);
+        console.log(hover, hover === i ? b.color : 'none');
+      }}
+      onMouseLeave={() => setHover(-1)}
+      key={i}
+    >
+      {React.cloneElement(b.icon, {
+        style: {
+          fill: hover == i ? b.color : 'unset',
+        },
+      })}
     </li>
-  })
-  
-  return (
-    <ul className="group-button">
-      {buttons}
-    </ul>
-  );
+  ));
+
+  return <ul className="group-button">{buttons}</ul>;
 }
 
 GroupButton.propTypes = {};

@@ -4,7 +4,12 @@
  *
  */
 import produce from 'immer';
-import { DEFAULT_ACTION, SLIDESHOW_LOAD_SUCCESS } from './constants';
+import {
+  DEFAULT_ACTION,
+  SLIDESHOW_LOAD_SUCCESS,
+  CALL_GOT_DEVICE_SIGNAL,
+  PEER_SAVE,
+} from './constants';
 
 export const initialState = {
   slideshow: {
@@ -28,7 +33,17 @@ const controlPanelReducer = (state = initialState, action) =>
         break;
       case SLIDESHOW_LOAD_SUCCESS:
         draft.slideshow = action.slideshow;
-        console.log('hello from reducer', draft.slideshow, action.slideshow);
+        draft.device = action.device;
+        console.log('hello from reducer', action.device, action.slideshow);
+        break;
+      case CALL_GOT_DEVICE_SIGNAL:
+        console.log('device signal reducer', action.signal);
+        draft.deviceSignal = action.signal;
+        break;
+      case PEER_SAVE:
+        draft.peer = action.peer;
+        draft.peer.debug = console.log;
+
         break;
     }
   });

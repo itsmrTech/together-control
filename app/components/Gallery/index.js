@@ -8,6 +8,7 @@ import React, { memo } from 'react';
 import './style.css';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
+import Dropzone from 'react-dropzone';
 import AddIcon from '../../icons/Add';
 
 function Gallery(props = { photos: [] }) {
@@ -19,8 +20,18 @@ function Gallery(props = { photos: [] }) {
   return (
     <ul className="gallery">
       <li className="add-photo">
-        <AddIcon style={{ width: '20px' }} />
-        Add new Photo
+        <Dropzone onDrop={acceptedFiles => props.onDrop(acceptedFiles)}>
+          {({ getRootProps, getInputProps }) => (
+            <section>
+              <div {...getRootProps()} style={{ outline: 'none' }}>
+                <input {...getInputProps()} />
+                <AddIcon style={{ width: '20px' }} />
+
+                <p>Add new Photo</p>
+              </div>
+            </section>
+          )}
+        </Dropzone>
       </li>
       {images}
       <li />
