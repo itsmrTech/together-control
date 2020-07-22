@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+
+  together-control:
+    container_name: together-control
+    build:
+      context: .
+      dockerfile: .Dockerfile
+    ports:
+      - '4022:80'
