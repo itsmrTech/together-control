@@ -1,3 +1,3 @@
 export default {
-  hostname: 'https://192.168.0.171:4020',
+  hostname: 'https://dev.together.shamot.ir/api',
 };

@@ -4,17 +4,18 @@
  *
  */
 import produce from 'immer';
+import Cookies from 'universal-cookie';
 import { DEFAULT_ACTION, LOGIN, LOGIN_SUCCESS } from './constants';
 
 export const initialState = {
   user: {
-    email: "",
-    _id: "",
-    firstName: "",
-    lastName: ""
+    email: '',
+    _id: '',
+    firstName: '',
+    lastName: '',
   },
-  devices:[],
-  token:localStorage.getItem("token")
+  devices: [],
+  token: localStorage.getItem('token'),
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -24,11 +25,13 @@ const loginReducer = (state = initialState, action) =>
       case DEFAULT_ACTION:
         break;
       case LOGIN_SUCCESS:
-        draft.user=action.user;
-        draft.token=action.token;
-        draft.devices=action.devices;
-        localStorage.setItem("token",action.token);
-        console.log("tok",draft.token,action.token)
+        draft.user = action.user;
+        draft.token = action.token;
+        draft.devices = action.devices;
+        localStorage.setItem('token', action.token);
+        const cookies = new Cookies();
+        cookies.set('token', action.token, { path: '/' });
+        console.log('tok', draft.token, action.token);
         break;
     }
   });
