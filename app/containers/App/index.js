@@ -38,7 +38,7 @@ export default function App() {
           component={NewDevice}
         />
         <Route exact path="/devices" component={Devices} />
-        <Route component={NotFoundPage} />
+        {/* <Route component={NotFoundPage} /> */}
       </Switch>
       <GlobalStyle />
     </div>

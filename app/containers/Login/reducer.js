@@ -30,7 +30,7 @@ const loginReducer = (state = initialState, action) =>
         draft.devices = action.devices;
         localStorage.setItem('token', action.token);
         const cookies = new Cookies();
-        cookies.set('token', action.token, { path: '/' });
+        cookies.set('x-access-token', action.token, { path: '/' });
         console.log('tok', draft.token, action.token);
         break;
     }
