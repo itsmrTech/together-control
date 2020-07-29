@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link ,Redirect} from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import ControlPanel from 'containers/ControlPanel/Loadable';
@@ -20,27 +20,38 @@ import GlobalStyle from '../../global-styles';
 import '../../assets/global-style.css';
 
 export default function App() {
-  return (
-    <div>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/device" component={ControlPanel} />
-        <Route
-          exact
-          path="/device/:device_unique_name"
-          component={ControlPanel}
-        />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/device-setup" component={NewDevice} />
-        <Route
-          exact
-          path="/device-setup/:device_unique_name"
-          component={NewDevice}
-        />
-        <Route exact path="/devices" component={Devices} />
-        {/* <Route component={NotFoundPage} /> */}
-      </Switch>
-      <GlobalStyle />
+  const api_regex = /^\/api\/.*/
+  // if using "/api/" in the pathname, don't use React Router
+  if (api_regex.test(window.location.pathname)) {
+    window.location.replace(window.location.pathname)
+    return <div>
+      hello {window.location.pathname}
+      
     </div>
-  );
+  } else {
+    return (
+      <div>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/device" component={ControlPanel} />
+          <Route
+            exact
+            path="/device/:device_unique_name"
+            component={ControlPanel}
+          />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/device-setup" component={NewDevice} />
+          <Route
+            exact
+            path="/device-setup/:device_unique_name"
+            component={NewDevice}
+          />
+          <Route exact path="/devices" component={Devices} />
+
+          {/* <Route component={NotFoundPage} /> */}
+        </Switch>
+        <GlobalStyle />
+      </div>
+    );
+  }
 }

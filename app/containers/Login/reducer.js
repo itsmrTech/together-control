@@ -6,6 +6,7 @@
 import produce from 'immer';
 import Cookies from 'universal-cookie';
 import { DEFAULT_ACTION, LOGIN, LOGIN_SUCCESS } from './constants';
+import vars from '../../utils/vars';
 
 export const initialState = {
   user: {
@@ -30,7 +31,7 @@ const loginReducer = (state = initialState, action) =>
         draft.devices = action.devices;
         localStorage.setItem('token', action.token);
         const cookies = new Cookies();
-        cookies.set('x-access-token', action.token, { path: '/' });
+        cookies.set('x-access-token', action.token, { path: '/',domain:vars.domain });
         console.log('tok', draft.token, action.token);
         break;
     }

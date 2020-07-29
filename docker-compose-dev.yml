@@ -8,6 +8,8 @@ services:
     labels:
       - "traefik.enable=true" # <== Enable traefik on itself to view dashboard and assign subdomain to view it
       - "traefik.http.routers.together-box-control.rule=Host(`dev.together.shamot.ir`)" # <== Setting the domain for the dashboard
+      - "traefik.http.routers.together-box-control.priority=1" # <== Setting the domain for the dashboard
+      # - "traefik.http.routers.together-box-control.rule=Path(`{path:^(?!/api.*$$).*}`)"
       - "traefik.http.routers.together-box-control.service=together-control-together-control@docker" # <== Enabling the api to be a service to access
       - "traefik.http.routers.together-box-control.entrypoints=web-secured"
       - "traefik.http.routers.together-box-control.tls.certresolver=letsencryptresolver"
