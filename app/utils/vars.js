@@ -1,4 +1,4 @@
 export default {
-  hostname: 'https://dev.api.together.shamot.ir',
-  domain:"dev.api.together.shamot.ir"
+  hostname: 'https://api.dev.together.shamot.ir',
+  domain: '.shamot.ir',
 };
