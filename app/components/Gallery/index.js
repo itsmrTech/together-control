@@ -5,7 +5,6 @@
  */
 
 import React, { memo } from 'react';
-import packeryComp from "react-packery-component"
 import './style.css';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
@@ -20,9 +19,8 @@ function Gallery(props = { photos: [] }) {
     </li>
   ));
   return (
-    <Packery className="gallery" elementType="ul" disableImagesLoaded={false} options={{}}>
-
-      {/* <li className="add-photo">
+      <ul className="gallery">
+      <li className="add-photo">
         <Dropzone onDrop={acceptedFiles => props.onDrop(acceptedFiles)}>
           {({ getRootProps, getInputProps }) => (
             <section>
@@ -35,11 +33,10 @@ function Gallery(props = { photos: [] }) {
             </section>
           )}
         </Dropzone>
-      </li> */}
+      </li>
       {images}
       <li />
-    </Packery>
-
+      </ul>
   );
 }
 
