@@ -34,6 +34,7 @@ const loginReducer = (state = initialState, action) =>
         cookies.set('x-access-token', action.token, {
           path: '/',
           domain: vars.domain,
+          maxAge: 1000 * 60 * 60 * 24 * 365,
         });
         console.log('tok', draft.token, action.token);
         break;

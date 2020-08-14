@@ -5,12 +5,14 @@
  */
 
 import React, { memo } from 'react';
+import packeryComp from "react-packery-component"
 import './style.css';
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 import Dropzone from 'react-dropzone';
 import AddIcon from '../../icons/Add';
 
+const Packery = packeryComp(React);
 function Gallery(props = { photos: [] }) {
   const images = props.photos.map((p, i) => (
     <li key={i}>
@@ -18,8 +20,9 @@ function Gallery(props = { photos: [] }) {
     </li>
   ));
   return (
-    <ul className="gallery">
-      <li className="add-photo">
+    <Packery className="gallery" elementType="ul" disableImagesLoaded={false} options={{}}>
+
+      {/* <li className="add-photo">
         <Dropzone onDrop={acceptedFiles => props.onDrop(acceptedFiles)}>
           {({ getRootProps, getInputProps }) => (
             <section>
@@ -32,10 +35,11 @@ function Gallery(props = { photos: [] }) {
             </section>
           )}
         </Dropzone>
-      </li>
+      </li> */}
       {images}
       <li />
-    </ul>
+    </Packery>
+
   );
 }
 
