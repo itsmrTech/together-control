@@ -11,7 +11,6 @@ import './style.css';
 import Dropzone from 'react-dropzone';
 import AddIcon from '../../icons/Add';
 
-const Packery = packeryComp(React);
 function Gallery(props = { photos: [] }) {
   const images = props.photos.map((p, i) => (
     <li key={i}>
@@ -19,7 +18,7 @@ function Gallery(props = { photos: [] }) {
     </li>
   ));
   return (
-      <ul className="gallery">
+    <ul className="gallery">
       <li className="add-photo">
         <Dropzone onDrop={acceptedFiles => props.onDrop(acceptedFiles)}>
           {({ getRootProps, getInputProps }) => (
@@ -36,7 +35,7 @@ function Gallery(props = { photos: [] }) {
       </li>
       {images}
       <li />
-      </ul>
+    </ul>
   );
 }
 
