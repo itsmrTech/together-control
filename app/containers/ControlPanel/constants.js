@@ -13,6 +13,7 @@ export const SOCKET_CONNECT = 'app/ControlPanel/SOCKET_CONNECT';
 export const PEER_CREATE = 'app/ControlPanel/PEER_CREATE';
 export const PEER_SAVE = 'app/ControlPanel/PEER_SAVE';
 export const CALL_START = 'app/ControlPanel/CALL_START';
+export const CALL_HANGUP = 'app/ControlPanel/CALL_HANGUP';
 export const CALL_GOT_DEVICE_SIGNAL = 'app/ControlPanel/CALL_GOT_DEVICE_SIGNAL';
 
 export const PICTURE_UPLOAD = 'app/ControlPanel/PICTURE_UPLOAD';

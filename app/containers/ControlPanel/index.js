@@ -28,7 +28,13 @@ import CallIcon from '../../icons/Call';
 import HangUpIcon from '../../icons/HangUp';
 import GalleryIcon from '../../icons/Gallery';
 import LinkIcon from '../../icons/Link';
-import { loadSlideshow, startCall, createPeer, uploadPicture } from './actions';
+import {
+  loadSlideshow,
+  startCall,
+  createPeer,
+  uploadPicture,
+  hangupCall,
+} from './actions';
 import Loading from '../../components/Loading';
 import SimplePeer from 'simple-peer';
 
@@ -86,6 +92,7 @@ export function ControlPanel(props) {
       // peer.signal(props.controlPanel.callConnected)
     }
   }, [props.controlPanel.deviceSignal]);
+
   return (
     <div>
       <Helmet>
@@ -182,6 +189,9 @@ export function ControlPanel(props) {
               icon: !call ? <CallIcon /> : <HangUpIcon />,
               color: !call ? '#00b73c' : 'red',
               onClick: () => {
+                if (call) {
+                  props.doHangupCall(props.controlPanel.device.unique_name);
+                }
                 setCall(!call);
               },
             },
@@ -221,6 +231,9 @@ function mapDispatchToProps(dispatch) {
     },
     doStartCall: (device_unique_name, signal) => {
       dispatch(startCall(signal, device_unique_name));
+    },
+    doHangupCall: device_unique_name => {
+      dispatch(hangupCall(device_unique_name));
     },
     doCreatePeer: stream => {
       dispatch(createPeer(stream));
