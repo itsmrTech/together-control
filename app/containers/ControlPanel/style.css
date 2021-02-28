@@ -20,7 +20,7 @@
     font-size: 5vw;
     color:#444;
     margin:20px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     transition-duration: 0.5s;
 
 }
@@ -61,7 +61,13 @@ a:hover{
 }
 .title-detailed{
     transition-duration: 0.5s;
-    transform: translateX(-60%);
+    transform: translateX(-50%);
+
+}
+.device-actions{
+    flex:1;
+    display:flex;
+    
 
 }
 .picture-in-picture{

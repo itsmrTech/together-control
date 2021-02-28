@@ -28,6 +28,7 @@ import CallIcon from '../../icons/Call';
 import HangUpIcon from '../../icons/HangUp';
 import GalleryIcon from '../../icons/Gallery';
 import LinkIcon from '../../icons/Link';
+import GearIcon from '../../icons/Gear';
 import {
   loadSlideshow,
   startCall,
@@ -37,8 +38,9 @@ import {
 } from './actions';
 import Loading from '../../components/Loading';
 import SimplePeer from 'simple-peer';
+import DeviceStatus from '../../components/DeviceStatus';
 
-const startVideoCall = () => {};
+const startVideoCall = () => { };
 export function ControlPanel(props) {
   useInjectReducer({ key: 'controlPanel', reducer });
   useInjectSaga({ key: 'controlPanel', saga });
@@ -65,7 +67,7 @@ export function ControlPanel(props) {
       setTimeout(() => {
         console.log('after a while', props.controlPanel.peer);
       }, 3000);
-      props.controlPanel.peer.on('signal', function(data) {
+      props.controlPanel.peer.on('signal', function (data) {
         console.log('sig', data);
 
         props.doStartCall(props.controlPanel.device.unique_name, data);
@@ -75,7 +77,7 @@ export function ControlPanel(props) {
         //   props.controlPanel.peer.signal(signal)
         // })
       });
-      props.controlPanel.peer.on('stream', function(stream) {
+      props.controlPanel.peer.on('stream', function (stream) {
         setCallConnected(true);
         setCallLoading(false);
         console.log('stream got', stream);
@@ -104,13 +106,18 @@ export function ControlPanel(props) {
         className="container"
         style={{ backgroundColor: call ? '#444' : undefined }}
       >
-        <span
-          className={`title ${geekyMode ? 'title-detailed' : ''} ${
-            call ? 'title-in-call' : ''
-          }`}
-        >
-          {props.controlPanel.device.name}
-        </span>
+
+        <div className={`title ${geekyMode ? 'title-detailed' : ''} ${
+          call ? 'title-in-call' : ''
+          }`} style={{ flexDirection: "column", display: "flex" }}>
+          <span>
+            {props.controlPanel.device.name}
+          </span>
+          <div className={"device-actions"} style={{alignSelf:geekyMode?"start":"center"}}>
+            <DeviceStatus status={"busy"} />
+            <GearIcon style={{ width: "4vw", paddingLeft: "15px", color: "#DADADA" }} />
+          </div>
+        </div>
         <Device
           className={
             call ? 'picture-in-picture' : geekyMode ? 'rotated-device' : ''
@@ -149,18 +156,18 @@ export function ControlPanel(props) {
               {callLoading ? (
                 <Loading color="#b54368" />
               ) : (
-                <video
-                  style={{ width: '100%' }}
-                  ref={deviceWebcam}
-                  id="device-webcame"
-                />
-              )}
+                  <video
+                    style={{ width: '100%' }}
+                    ref={deviceWebcam}
+                    id="device-webcame"
+                  />
+                )}
             </div>
             <div style={{ position: 'relative', height: '60vh' }} />
           </div>
         ) : (
-          undefined
-        )}
+            undefined
+          )}
         <a
           onClick={() => setGeekyMode(!geekyMode)}
           className={geekyMode ? 'geeky-mode-active' : 'geeky-mode'}
@@ -182,7 +189,7 @@ export function ControlPanel(props) {
               title: 'Link',
               icon: <LinkIcon />,
               color: '#03a9ff',
-              onClick: () => {},
+              onClick: () => { },
             },
             {
               title: 'Call',
