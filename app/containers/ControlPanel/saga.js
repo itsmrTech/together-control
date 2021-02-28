@@ -33,15 +33,13 @@ export function* fetchSlideshow(action) {
     const { device_unique_name } = action;
     console.log(
       'hello',
-      `/slideshows${
-        device_unique_name ? `?device_unique_name=${device_unique_name}` : ''
+      `/slideshows${device_unique_name ? `?device_unique_name=${device_unique_name}` : ''
       }`,
       device_unique_name,
     );
     const slideshow = yield call(
       requestAPI,
-      `/slideshows${
-        device_unique_name ? `?device_unique_name=${device_unique_name}` : ''
+      `/slideshows${device_unique_name ? `?device_unique_name=${device_unique_name}` : ''
       }`,
     );
     console.log(slideshow);
@@ -62,7 +60,7 @@ function* handleIO(socket) {
 function subscribe(socket) {
   return eventChannel(emit => {
     console.log('sub');
-    socket.on('voip-peering', function({ signal }) {
+    socket.on('voip-peering', function ({ signal }) {
       console.log('voip-peering');
       emit(getDeviceSignal(signal));
     });
@@ -70,7 +68,7 @@ function subscribe(socket) {
     socket.on('disconnect', e => {
       // TODO: handle
     });
-    return () => {};
+    return () => { };
   });
 }
 function* sendingSignal(socket) {
@@ -99,7 +97,15 @@ export function* createPeer(stream) {
       new SimplePeer({
         initiator: true,
         trickle: false,
+        reconnectTimer: 100,
+        iceTransportPolicy: 'relay',
+        trickle: false,
         stream: stream.stream,
+        config: {
+          iceServers: [
+            { urls: 'turn:194.5.193.188:3478', username: 'shamot.group@gmail.com', credential: 'wjxQjRnsmNrv8uAU' }
+          ]
+        }
       }),
     ),
   );
