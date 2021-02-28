@@ -18,6 +18,7 @@ import {
   CALL_START,
   PEER_CREATE,
   PICTURE_UPLOAD,
+  CALL_HANGUP,
 } from './constants';
 import vars from '../../utils/vars';
 // Individual exports for testing
@@ -53,6 +54,8 @@ export function* fetchSlideshow(action) {
 
 function* handleIO(socket) {
   yield fork(sendingSignal, socket);
+  yield fork(sendingHangup, socket);
+
   const channel = yield call(subscribe, socket);
   while (true) {
     const action = yield take(channel);
@@ -78,6 +81,13 @@ function* sendingSignal(socket) {
     const { signal, device_unique_name } = yield take(CALL_START);
     console.log('startCall');
     socket.emit('voip-signal', { signal, device_unique_name });
+  }
+}
+function* sendingHangup(socket) {
+  while (true) {
+    const { device_unique_name } = yield take(CALL_HANGUP);
+    console.log('hangupCall');
+    socket.emit('voip-hangup', { device_unique_name });
   }
 }
 function connect() {

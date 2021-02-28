@@ -16,6 +16,7 @@ import {
   PEER_CREATE,
   PEER_SAVE,
   PICTURE_UPLOAD,
+  CALL_HANGUP,
 } from './constants';
 
 export function defaultAction() {
@@ -53,6 +54,13 @@ export function startCall(signal, device_unique_name) {
   return {
     type: CALL_START,
     signal,
+    device_unique_name,
+  };
+}
+export function hangupCall(device_unique_name) {
+  return {
+    type: CALL_HANGUP,
+
     device_unique_name,
   };
 }
