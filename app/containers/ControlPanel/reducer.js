@@ -9,6 +9,7 @@ import {
   SLIDESHOW_LOAD_SUCCESS,
   CALL_GOT_DEVICE_SIGNAL,
   PEER_SAVE,
+  CALL_HANGUP,
 } from './constants';
 
 export const initialState = {
@@ -40,11 +41,15 @@ const controlPanelReducer = (state = initialState, action) =>
         console.log('device signal reducer', action.signal);
         draft.deviceSignal = action.signal;
         break;
+      case CALL_HANGUP:
+        draft.device_unique_name = action.device_unique_name;
+        break;
       case PEER_SAVE:
         draft.peer = action.peer;
         draft.peer.debug = console.log;
 
         break;
+
     }
   });
 

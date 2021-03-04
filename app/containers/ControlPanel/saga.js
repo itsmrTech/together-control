@@ -89,7 +89,7 @@ function* sendingHangup(socket) {
     console.log('hangupCall');
     socket.emit('voip-hangup', { device_unique_name });
   }
-}
+} 
 function connect() {
   const socket = io(vars.hostname);
   return new Promise(resolve => {
