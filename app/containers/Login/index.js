@@ -37,11 +37,17 @@ export function Login(props) {
   const [redirect, setRedirect] = useState();
   useEffect(() => {
     console.log(props.login);
-    if (props.login.token && props.login.token != '') {
+    if (
+      props.login.token &&
+      props.login.token != '' &&
+      props.login.user._id &&
+      props.login.user._id != ''
+    ) {
+      console.log(props.login)
       if (props.login.devices.length > 1) {
         setRedirect(<Redirect to="/devices" />);
       } else if (props.login.devices.length == 1)
-        setRedirect(<Redirect to="/control" />);
+        setRedirect(<Redirect to="/device" />);
       else setRedirect(<Redirect to="/device-setup" />);
     }
   }, [props.login.token]);
@@ -89,7 +95,7 @@ export function Login(props) {
               title="Login"
               color="#ab3a55"
               style={{ marginTop: '20px' }}
-              onClick={function() {
+              onClick={function () {
                 console.log(props);
                 props.doLogin(email, password);
               }}

@@ -198,6 +198,9 @@ export function ControlPanel(props) {
               onClick: () => {
                 if (call) {
                   props.doHangupCall(props.controlPanel.device.unique_name);
+                  setCallConnected(false);
+                  setCallLoading(true);
+
                 }
                 setCall(!call);
               },
