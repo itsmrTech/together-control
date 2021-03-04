@@ -49,7 +49,6 @@ const controlPanelReducer = (state = initialState, action) =>
         draft.peer.debug = console.log;
 
         break;
-
     }
   });
 
